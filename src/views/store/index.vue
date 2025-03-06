@@ -144,7 +144,7 @@ const openStoreUpdate = (store) => {
 
 // 删除仓库
 const deleteStore = (storeId) => {
-  del(`/store/store-delete/${storeId}`).then(result => {
+  del(`/store/store-delete/${storeId}`, null, { title: "提示", message: "您确定删除该仓库吗？" }).then(result => {
     tip.success(result.message);
     // 重新查询
     getStorePageList();

@@ -10,6 +10,7 @@
     "axios": "^0.21.1",
     "echarts": "^5.3.2",
     "element-plus": "2.0.4",
+    "esbuild": "^0.24.0",
     "file-saver": "^2.0.5",
     "font-awesome": "^4.7.0",
     "vue": "^3.2.31",

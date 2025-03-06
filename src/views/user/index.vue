@@ -174,7 +174,7 @@ const export2Table = () => {
 
 // 删除用户提交
 const deleteUser = (userId) => {
-  del(`/user/deleteUser/${userId}`).then(result => {
+  del(`/user/deleteUser/${userId}`, null, { title: "提示", message: "您确定删除该用户吗？" }).then(result => {
     tip.success(result.message);
     // 重新查询
     getUserList();
@@ -190,7 +190,7 @@ const deleteUserList = () => {
       return prev;
     }, []);
 
-    del('/user/deleteUserList', userIds).then(result => {
+    del('/user/deleteUserList', userIds, { title: "提示", message: "您确定删除选中用户吗？" }).then(result => {
       tip.success(result.message);
       // 重新查询
       getUserList();

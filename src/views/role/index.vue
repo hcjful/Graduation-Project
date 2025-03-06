@@ -147,7 +147,7 @@ const openRoleUpdate = (row) => {
 
 // 删除角色
 const deleteRole = (roleId) => {
-  del(`/role/role-delete/${roleId}`).then(result => {
+  del(`/role/role-delete/${roleId}`, null, { title: "提示", message: "您确定删除该角色吗？" }).then(result => {
     tip.success(result.message);
     // 重新查询
     getRoleList();

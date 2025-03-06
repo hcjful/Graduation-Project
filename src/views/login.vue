@@ -2,7 +2,7 @@
   <div class="login">
     <el-card class="box-card" shadow="always">
       <div
-        style="
+          style="
           padding: 40px 0px 60px 0px;
           text-align: center;
           color: #409eff;
@@ -10,16 +10,16 @@
           font-weight: bold;
           letter-spacing: 3px;
         "
-      >恒合仓库管理系统
+      >农村一体化系统
       </div>
       <el-form
-        ref="loginForm"
-        :model="loginUser"
-        :rules="rules"
-        size="large"
-        label-position="right"
-        label-width="70px"
-        style="width: 360px; margin: 0px auto"
+          ref="loginForm"
+          :model="loginUser"
+          :rules="rules"
+          size="large"
+          label-position="right"
+          label-width="70px"
+          style="width: 360px; margin: 0px auto"
       >
         <el-form-item label="账号" prop="userCode">
           <el-input v-model="loginUser.userCode"></el-input>
@@ -31,37 +31,45 @@
           <el-input v-model="loginUser.verificationCode">
             <template #suffix>
               <el-image
-                style="overflow: visible; position: relative; left: 16px;"
-                :src="codeSrc"
-                @click="codeSrc=codeSrc+'?'+new Date()"
-                ></el-image>
+                  style="overflow: visible; position: relative; left: 16px;"
+                  :src="codeSrc"
+                  @click="codeSrc=codeSrc+'?'+new Date()"
+              ></el-image>
             </template>
           </el-input>
         </el-form-item>
       </el-form>
       <div style="text-align: right; width: 360px; margin: 40px auto 0px">
         <el-button
-          @click="login"
-          type="primary"
-          size="large"
-          style="width: 300px"
-          >登录</el-button>
+            @click="login"
+            type="primary"
+            size="large"
+            style="width: 180px"
+        >登录
+        </el-button>
+        <el-button
+            @click="goToRegister"
+            type="primary"
+            size="large"
+            style="width: 100px"
+        >注册
+        </el-button>
       </div>
     </el-card>
   </div>
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
-import { useRouter } from "vue-router";
-import { post, tip, setLocalToken, WAREHOUSE_CONTEXT_PATH } from "@/common";
+import {reactive, ref} from "vue";
+import {useRouter} from "vue-router";
+import {post, tip, setLocalToken, WAREHOUSE_CONTEXT_PATH} from "@/common";
 
 const loginForm = ref();
 
 const router = useRouter(); // 获取路由器
 
-const loginUser = reactive({ 
-  userCode: "admin", 
+const loginUser = reactive({
+  userCode: "admin",
   userPwd: "123456",
   verificationCode: ""
 });
@@ -97,7 +105,7 @@ const rules = reactive({
 
 // 回车登录
 window.onkeydown = ($event) => {
-  if($event.key && $event.key == 'Enter'){
+  if ($event.key && $event.key == 'Enter') {
     login();
   }
 }
@@ -111,11 +119,15 @@ const login = () => {
         setLocalToken(result.data);
         tip.success("登录成功！");
         // 通过路由导航到home页面
-        router.push({ path: "/home" });
+        router.push({path: "/home"});
       });
     }
   });
 };
+const goToRegister = () => {
+// 通过路由导航到注册页面
+  router.push({path: "/register"});
+}
 </script>
 
 
@@ -134,6 +146,7 @@ const login = () => {
   justify-content: center;
   align-items: center;
 }
+
 .box-card {
   width: 800px;
   height: 500px;

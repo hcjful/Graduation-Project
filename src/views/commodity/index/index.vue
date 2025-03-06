@@ -328,7 +328,7 @@ const toOutstoreList = (storeId) => {
 
 // 删除单个商品
 const deleteCommodity = (productId) => {
-  del(`/product/product-delete/${productId}`).then(result => {
+  del(`/product/product-delete/${productId}`, null, { title: "提示", message: "您确定删除该商品吗？" }).then(result => {
     tip.success(result.message);
     // 重新查询
     getCommodityPageList();
@@ -344,7 +344,7 @@ const deleteCommodityList = () => {
       return prev;
     }, []);
 
-    del(`/product/product-list-delete`, productIds).then(result => {
+    del(`/product/product-list-delete`, productIds, { title: "提示", message: "您确定删除选中商品吗？" }).then(result => {
       tip.success(result.message);
       // 重新查询
       getCommodityPageList();

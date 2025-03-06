@@ -28,9 +28,10 @@ export default ({ command, mode }) => {
       open: true, // 启动项目时是自动打开浏览器
       strictPort: false, // 如果port指定端口被占用，是否仍然使用此端口（而不自动使用其它可用端口）
       https: false,// 是否使用https访问
-      // 服务端代理设置
+      //服务端代理设置
       proxy: {
-        // 如果访问地址以"/api"开头，则自动代理到服务端地址http://localhost:9000/warehouse,同时将"/api"替换为""
+        //如果访问地址以"/api"开头,则自动代理到变量VITE_WAREHOUSE_CONTEXT_PATH所表示的
+		//服务端地址http://localhost:9999/warehouse
         '/api': {
           target: env.VITE_WAREHOUSE_CONTEXT_PATH,
           changeOrigin: true,

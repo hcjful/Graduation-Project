@@ -316,8 +316,8 @@ instance.interceptors.request.use(
 
 		config['headers'][HEADER_TOKEN] = getToken(); // 请求时带上token
 
-		const source = CancelToken.source();//创建一个取消令牌资源
-		config['cancelToken'] = source.token;//从资源中获得取消令牌，并在请求的cancelToken配置项上配置取消令牌
+		const source = CancelToken.source();// 创建一个取消令牌资源
+		config['cancelToken'] = source.token;// 从资源中获得取消令牌，并在请求的cancelToken配置项上配置取消令牌
 		if (!requestInfoPool.putRequstInfo(config)) { //存在没有结束的相同请求
 			source.cancel('重复请求 ' + config.url + ' 已被阻止。');//取消请求
 			//console.error('阻止重复请求：', config);
